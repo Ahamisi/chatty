@@ -1,0 +1,3 @@
+Route.prototype = {
+    constructor()
+}

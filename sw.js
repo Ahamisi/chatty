@@ -1,5 +1,5 @@
-const staticCacheName = "site-static-v2";
-const dynamicCacheName = "site-dynamic-v2";
+const staticCacheName = "site-static-v3";
+const dynamicCacheName = "site-dynamic-v3";
 const assets = ["./", "./index.html", "./assets/asset.css", "./js/ui.js"];
 
 // cache size limit function
@@ -30,7 +30,11 @@ self.addEventListener("activate", evt => {
   evt.waitUntil(
     caches.keys().then(keys => {
       //console.log(keys);
-      return Promise.all(keys.filter(key => key !== staticCacheName && key !== dynamicCacheName).map(key => caches.delete(key)));
+      return Promise.all(
+        keys
+          .filter(key => key !== staticCacheName && key !== dynamicCacheName)
+          .map(key => caches.delete(key))
+      );
     })
   );
 });
